@@ -23,3 +23,20 @@
 **start**依赖**server**和**framework**
 
 ---
+
+
+## 
+|名称          | 版本   | 官方文件    | 备注   | 
+| -----------  | :---- | ----       | ----    | 
+| Springboot   | 2.1.4 |     /       |         |
+| Jwt          |       |            |         |  
+| MD5          | 1.9   |            |         |    
+| HuTool       | 5.5.8 |https://hutool.cn/    |      | 
+| fastjson     |       |            |      | 
+| mysql        |       |            |      | 
+| lombok       |       |            |      | 
+| MyBatis      |       |
+| PageHelper   |       |
+
+
+
