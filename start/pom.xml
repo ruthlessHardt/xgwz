@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>xgwz</artifactId>
+        <groupId>com.liwentao</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>start</artifactId>
+    <name>start</name>
+    <description>Start project for Spring Boot</description>
+
+    <dependencies>
+        <!--公共框架-->
+        <dependency>
+            <groupId>com.liwentao</groupId>
+            <artifactId>framework</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--业务-->
+        <dependency>
+            <groupId>com.liwentao</groupId>
+            <artifactId>server</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>xgwz</finalName>
+        <resources>
+            <!--指定资源位置-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <!--跳过maven单元测试-->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+<!--            &lt;!&ndash;打包jar&ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash;不打包资源文件&ndash;&gt;-->
+<!--                    <excludes>-->
+<!--                        <exclude>*.**</exclude>-->
+<!--                    </excludes>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            &lt;!&ndash;MANIFEST.MF 中 Class-Path 加入前缀&ndash;&gt;-->
+<!--                            <classpathPrefix>lib/</classpathPrefix>-->
+<!--                            &lt;!&ndash;jar包不包含唯一版本标识&ndash;&gt;-->
+<!--                            <useUniqueVersions>false</useUniqueVersions>-->
+<!--                            &lt;!&ndash;指定入口类&ndash;&gt;-->
+<!--                            <mainClass>com.liwentao.start.StartApplication</mainClass>-->
+<!--                        </manifest>-->
+<!--                        <manifestEntries>-->
+<!--                            &lt;!&ndash;MANIFEST.MF 中 Class-Path 加入资源文件目录&ndash;&gt;-->
+<!--                            &lt;!&ndash;本地依赖包需要手动 加入Class-Path ，否则无法找到&ndash;&gt;-->
+<!--                            <Class-Path>./resources/</Class-Path>-->
+<!--                        </manifestEntries>-->
+<!--                    </archive>-->
+<!--                    <outputDirectory>${project.build.directory}</outputDirectory>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
