@@ -47,7 +47,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             response.getWriter().write(JSONObject.toJSONString(ResponseResult.unauthorized()));
             return false;
         }
-        //获取TOKEN,注意要清除前缀"Bearer "
+        //获取TOKEN,注意要清除前缀"liwentao "
         String token = authorization.replace("liwentao ","");
         // HTTP请求头中TOKEN解析出的用户信息
         Claims claims = jwtUtil.parseToken(token);
