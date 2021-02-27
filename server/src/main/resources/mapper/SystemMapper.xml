@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwentao.mapper.SystemMapper">
+        <resultMap id="XgMenu" type="com.liwentao.entity.XgMenu">
+            <id column="m_id" property="mId"></id>
+            <result column="m_name" property="mName"></result>
+            <result column="level" property="level"></result>
+            <result column="m_pid" property="mPid"></result>
+            <result column="m_url" property="mUrl"></result>
+            <result column="create_by" property="createBy"></result>
+            <result column="create_time" property="createTime"></result>
+            <result column="update_time" property="updateTime"></result>
+            <result column="state" property="state"></result>
+            <result column="icon" property="icon"></result>
+            <collection property="xgMenuList" column="mids=m_id" select="com.liwentao.mapper.SystemMapper.getMenuChildren"/>
+        </resultMap>
+
+        <select id="getMenus"  resultMap="XgMenu">
+            select * from xg_menu
+            where m_id in
+            <foreach collection="array" item="mids" index="index" open="(" close=")" separator=",">
+               #{mids}
+            </foreach>
+            and level = 1
+            and state = 1
+        </select>
+
+        <select id="getMenuChildren"  resultMap="XgMenu">
+            select * from xg_menu
+            where  m_pid = #{mids}
+            and level = 2
+            and state = 1
+        </select>
+        <!--根据角色id查菜单ID集合-->
+        <select id="selectMids"  parameterType="integer" resultType="string">
+            select m_id from xg_role_menu where r_id = #{roleId}
+        </select>
+</mapper>

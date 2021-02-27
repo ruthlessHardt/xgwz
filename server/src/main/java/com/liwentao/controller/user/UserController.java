@@ -38,6 +38,7 @@ public class UserController {
      * 登录
      * @return
      */
+    @PassLogin
     @GetMapping("/login")
     public ResponseResult login(XgUser xgUser, HttpServletResponse response){
         XgUser user = userService.login(xgUser);
