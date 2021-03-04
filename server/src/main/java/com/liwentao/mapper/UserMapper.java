@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -18,4 +19,12 @@ public interface UserMapper {
     XgUser login(XgUser xgUser);
 
     List<XgUser> searchUser(XgUser xgUser);
+
+    List<Map> getNum();
+
+    Integer add(XgUser xgUser);
+
+    Integer update(XgUser xgUser);
+
+    Integer delete(Integer nId);
 }

@@ -14,7 +14,7 @@
         <result column="create_by" jdbcType="VARCHAR" property="createBy" />
         <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     </resultMap>
-        <!--注册-->
+    <!--注册-->
         <select id="saveUser" resultType="java.lang.String">
             select * from xg_n_user;
         </select>
@@ -47,4 +47,34 @@
                 </if>
             </where>
         </select>
+    <!--获取数量-->
+    <select id="getNum" resultType="map">
+        SELECT n_dept,count(1) num FROM xg_n_user GROUP BY n_dept
+    </select>
+    <!--新增用户-->
+    <insert id="add" parameterType="com.liwentao.entity.XgUser">
+        insert into xg_n_user(n_uname,n_password,n_phone,n_sex,n_dept,create_time,update_time,state,create_by,avatar)
+        values (#{nuName},#{nPassword},#{nPhone},#{nSex},#{nDept},now(),'',1,#{createBy},#{avatar})
+    </insert>
+
+    <!--修改用户-->
+    <update id="update" parameterType="com.liwentao.entity.XgUser">
+        update xg_n_user
+        set n_uname = #{nuName},
+        n_password = #{nPassword},
+        n_phone = #{nPhone},
+        n_sex = #{nSex},
+        n_dept = #{nDept},
+        update_time = now(),
+        avatar = #{avatar}
+        where n_id = #{nId}
+    </update>
+
+    <!--删除用户-->
+    <update id="delete">
+        update xg_n_user
+        set state = 0
+        where n_id = #{nId}
+    </update>
+
 </mapper>
