@@ -40,8 +40,8 @@ public class UserController {
      * @return
      */
     @PassLogin
-    @GetMapping("/login")
-    public ResponseResult login(XgUser xgUser, HttpServletResponse response){
+    @PostMapping("/login")
+    public ResponseResult login(@RequestBody XgUser xgUser, HttpServletResponse response){
         XgUser user = userService.login(xgUser);
         if(user == null){
             return ResponseResult.invalid_request().setMsg("用户名或密码错误");
