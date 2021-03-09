@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class XgMaterialInfo {
   private long materialId;
+  private String materialCode;
   private String materialName;
   private String materialImg;
   private String materialTypeId;

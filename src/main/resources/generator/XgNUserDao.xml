@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.XgNUserDao">
+  <resultMap id="BaseResultMap" type="generate.XgNUser">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="n_uname" jdbcType="VARCHAR" property="nUname" />
+    <result column="n_password" jdbcType="VARCHAR" property="nPassword" />
+    <result column="n_phone" jdbcType="VARCHAR" property="nPhone" />
+    <result column="n_sex" jdbcType="VARCHAR" property="nSex" />
+    <result column="n_dept" jdbcType="VARCHAR" property="nDept" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, n_uname, n_password, n_phone, n_sex, n_dept, create_time, update_time, `state`, 
+    create_by, avatar
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xg_n_user
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xg_n_user
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="n_id" keyProperty="nId" parameterType="generate.XgNUser" useGeneratedKeys="true">
+    insert into xg_n_user (n_uname, n_password, n_phone, 
+      n_sex, n_dept, create_time, 
+      update_time, `state`, create_by, 
+      avatar)
+    values (#{nUname,jdbcType=VARCHAR}, #{nPassword,jdbcType=VARCHAR}, #{nPhone,jdbcType=VARCHAR}, 
+      #{nSex,jdbcType=VARCHAR}, #{nDept,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="n_id" keyProperty="nId" parameterType="generate.XgNUser" useGeneratedKeys="true">
+    insert into xg_n_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nUname != null">
+        n_uname,
+      </if>
+      <if test="nPassword != null">
+        n_password,
+      </if>
+      <if test="nPhone != null">
+        n_phone,
+      </if>
+      <if test="nSex != null">
+        n_sex,
+      </if>
+      <if test="nDept != null">
+        n_dept,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nUname != null">
+        #{nUname,jdbcType=VARCHAR},
+      </if>
+      <if test="nPassword != null">
+        #{nPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nPhone != null">
+        #{nPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null">
+        #{nSex,jdbcType=VARCHAR},
+      </if>
+      <if test="nDept != null">
+        #{nDept,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.XgNUser">
+    update xg_n_user
+    <set>
+      <if test="nUname != null">
+        n_uname = #{nUname,jdbcType=VARCHAR},
+      </if>
+      <if test="nPassword != null">
+        n_password = #{nPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nPhone != null">
+        n_phone = #{nPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null">
+        n_sex = #{nSex,jdbcType=VARCHAR},
+      </if>
+      <if test="nDept != null">
+        n_dept = #{nDept,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.XgNUser">
+    update xg_n_user
+    set n_uname = #{nUname,jdbcType=VARCHAR},
+      n_password = #{nPassword,jdbcType=VARCHAR},
+      n_phone = #{nPhone,jdbcType=VARCHAR},
+      n_sex = #{nSex,jdbcType=VARCHAR},
+      n_dept = #{nDept,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      `state` = #{state,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

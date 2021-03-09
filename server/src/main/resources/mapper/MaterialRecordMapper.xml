@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwentao.mapper.MaterialRecordMapper">
+    <resultMap id="XgStorageRecord" type="com.liwentao.entity.XgStorageRecord">
+        <id column="id" property="id"></id>
+        <result column="record_id" property="recordId"></result>
+        <result column="material_category" property="materialCategory"></result>
+        <result column="num" property="num"></result>
+        <result column="from_id" property="fromId"></result>
+        <result column="material_status" property="materialStatus"></result>
+        <result column="operator" property="operator"></result>
+        <result column="tel" property="tel"></result>
+        <result column="material_supportor" property="materialSupportor"></result>
+        <result column="state" property="state"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+    <select id="getMaterialRecord" resultType="com.liwentao.entity.XgStorageRecord" resultMap="XgStorageRecord">
+        select
+        id,record_id,material_category,
+        num,from_id,material_status,
+        operator,tel,
+        material_supportor,state,
+        create_time,update_time
+        from xg_storage_record
+    </select>
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwentao.mapper.MaterialInfoMapper">
+    <resultMap id="XgMaterialInfo" type="com.liwentao.entity.XgMaterialInfo">
+        <id column="material_id" property="materialId"></id>
+        <result column="material_code" property="materialCode"></result>
+        <result column="material_name" property="materialName"></result>
+        <result column="material_img" property="materialImg"></result>
+        <result column="material_specifications" property="materialTypeId"></result>
+        <result column="material_type_id" property="materialSpecifications"></result>
+        <result column="material_unit" property="materialUnit"></result>
+        <result column="material_desc" property="materialDesc"></result>
+        <result column="state" property="state"></result>
+        <result column="state" property="state"></result>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    </resultMap>
+
+    <insert id="addInfo" parameterType="com.liwentao.entity.XgMaterialInfo">
+        insert into xg_material_info(material_code,material_name, material_img, material_type_id,
+        material_specifications, material_unit, material_desc, state, create_time, update_time,)
+        values (#{materialCode},#{materialName},#{materialImg},#{materialTypeId},#{materialSpecifications},#{materialUnit},#{materialDesc},1,now(),'');
+    </insert>
+
+    <update id="updateInfo" parameterType="com.liwentao.entity.XgMaterialInfo">
+        update xg_material_info set material_name = #{materialName},
+        material_img = #{materialImg},
+        material_type_id=#{materialTypeId},
+        material_specifications = #{materialSpecifications},
+       material_unit =#{materialUnit},
+        material_desc = #{materialDesc},update_time=#{updateTime}
+    </update>
+
+    <delete id="deleteInfo" parameterType="integer">
+        update xg_material_info set state = 0 where material_id = #{materialId}
+    </delete>
+
+    <select id="getInfo" resultType="com.liwentao.entity.XgMaterialInfo" resultMap="XgMaterialInfo">
+        select * from xg_material_info
+        <where>
+            <if test="materialCode!=null and materialCode!=''">
+                and material_code  = #{materialCode}
+            </if>
+            <if test="materialName!=null and materialName!=''">
+               and material_name like concat_ws('%',#{materialName},'%')
+            </if>
+            <if test="materialTypeId!=null and materialTypeId!=''">
+                and material_type_id = #{materialTypeId}
+            </if>
+            <if test="materialTypeId!=null and materialTypeId!=''">
+                and material_type_id = #{materialTypeId}
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                and create_time like concat_ws('%',#{createTime},'%')
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                and update_time like concat_ws('%',#{updateTime},'%')
+            </if>
+        </where>
+        and state = 1;
+    </select>
+</mapper>

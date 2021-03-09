@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liwentao.mapper.MaterialFromMapper">
+    <insert id="addFrom"></insert>
+    <update id="updateFrom"></update>
+    <delete id="deleteFrom"></delete>
+
+    <select id="getFrom" resultType="com.liwentao.entity.XgMaterialFrom"></select>
+</mapper>
